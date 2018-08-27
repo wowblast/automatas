@@ -1,46 +1,61 @@
 package application;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Automata {
-	int numeroregla;
-	String estado1;
-	String cadenaletra;
-	String cadenaPila;
-	String estaodo2;
-	String orderpila;
-	public int getNumeroregla() {
-		return numeroregla;
+
+	SimpleIntegerProperty numeroregla;
+	SimpleStringProperty estado1;
+	SimpleStringProperty  cadenaletra;
+	SimpleStringProperty  cadenaPila;
+	SimpleStringProperty  estado2;
+	SimpleStringProperty  ordenpila;
+	public Automata(int numeroregla, String estado1, String cadenaletra,
+			String cadenaPila, String estado2, String orderpila) {
+
+		this.numeroregla =new SimpleIntegerProperty(numeroregla);
+		this.estado1 = new SimpleStringProperty(estado1);
+		this.cadenaletra = new SimpleStringProperty( cadenaletra);
+		this.cadenaPila =  new SimpleStringProperty(cadenaPila);
+		this.estado2 =  new SimpleStringProperty(estado2);
+		this.ordenpila =  new SimpleStringProperty(orderpila);
 	}
-	public void setNumeroregla(int numeroregla) {
-		this.numeroregla = numeroregla;
+	public int getNumeroregla() {
+		return numeroregla.get();
+	}
+	public void setNumeroregla(int  numeroregla) {
+		this.numeroregla.set(numeroregla);
 	}
 	public String getEstado1() {
-		return estado1;
+		return estado1.get();
 	}
 	public void setEstado1(String estado1) {
-		this.estado1 = estado1;
+		this.estado1.set(estado1);
 	}
 	public String getCadenaletra() {
-		return cadenaletra;
+		return cadenaletra.get();
 	}
 	public void setCadenaletra(String cadenaletra) {
-		this.cadenaletra = cadenaletra;
+		this.cadenaletra.set(cadenaletra);
 	}
 	public String getCadenaPila() {
-		return cadenaPila;
+		return cadenaPila.get();
 	}
 	public void setCadenaPila(String cadenaPila) {
-		this.cadenaPila = cadenaPila;
+		this.cadenaPila.set(cadenaPila);;
 	}
-	public String getEstaodo2() {
-		return estaodo2;
+	public String getEstado2() {
+		return estado2.get();
 	}
-	public void setEstaodo2(String estaodo2) {
-		this.estaodo2 = estaodo2;
+	public void setEstado2(String estado2) {
+		this.estado2.set(estado2);
 	}
 	public String getOrderpila() {
-		return orderpila;
+		return ordenpila.get();
 	}
 	public void setOrderpila(String orderpila) {
-		this.orderpila = orderpila;
+		this.ordenpila.set(orderpila);
 	}
+
 }
