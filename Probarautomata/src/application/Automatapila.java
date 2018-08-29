@@ -13,7 +13,6 @@ public class Automatapila {
 	ArrayList <Automata> reglas=new ArrayList<Automata>();
 	static String cadena="aaabb";
 
-
 	public void guardar_estados()
 	{
 
@@ -50,73 +49,105 @@ public class Automatapila {
 		}
 	}
 
-	public void guardar_estadofinal()
+	public void ver_vacio(String cadena,int posicion,String estado,ArrayList<String> pila,int regla)
 
 	{
+		String estadofinal= "no hay";
+		for(int i=0;i<reglas.size();i++)
+		{
+			if(reglas.get(i).cadenaletra.equals("F"))
+			{
 
-	}
+				if(reglas.get(i).estado1.equals(reglas.get(regla).getEstado1()))
+				{
+					if(reglas.get(i).getCadenaPila().equals(pila.get(pila.size()-1)))
+					{
+						if(reglas.get(i).getOrderpila().equals("Neutro"))
+						{							 
+						}
+						else if(reglas.get(i).getOrderpila().equals("D"))
+						{
+							pila.remove(pila.size()-1);
 
-	public void probar_cadena(String cadena,int posicion,String estado)
+						}
+						else
+						{
+							pila.add(reglas.get(i).getOrderpila().toLowerCase());
+						}
+
+						estadofinal = reglas.get(i).getEstaodo2();
 
 
-	{
+					}
+					else if(reglas.get(i).getCadenaPila().equals("Z"))
+					{
+
+						if(reglas.get(i).getOrderpila().equals("Neutro"))
+						{							 
+						}
+						else if(reglas.get(i).getOrderpila().equals("D"))
+						{
+							pila.remove(pila.size()-1);
+
+						}
+						else
+						{
+							pila.add(reglas.get(i).getOrderpila().toLowerCase());
+						}
+
+						estadofinal = reglas.get(i).getEstaodo2();
+
+
+
+
+					} 
+				}
+
+
+
+
+			}
+			probar_regla(cadena, posicion, estadofinal, pila);
+		}
 
 	}
 
 	public void probar_regla(String cadena,int posicion,String estado,ArrayList<String> pila)
 	{
 		String estadonuevo="No hay";
+		ArrayList<String> pila2=pila;
 
 		for(int x=0;x<reglas.size();x++)
 		{
-			if(estado=="aceptacion")
+			char letra= reglas.get(x).getCadenaletra().charAt(0);
+
+			if(estado.equals("aceptacion")&&pila.get(0).equals("ZO")&&Objects.equals(cadena.charAt(posicion),' '))
 			{
-				System.out.println("acepto");
+				System.out.println("acepto vacio");
 				break;
 			}
-
-			char letra= reglas.get(x).getCadenaletra().charAt(posicion);
-			
-			if((Objects.equals(estado, reglas.get(x).getEstado1())&&Objects.equals(letra, cadena.charAt(posicion))))
+			else if((Objects.equals(estado,reglas.get(x).getEstado1())&&Objects.equals(letra,cadena.charAt(posicion))) )
 			{
-				if(Objects.equals(pila.get(pila.size()-1), reglas.get(x).getCadenaPila()))
+				if(Objects.equals(reglas.get(x).getCadenaPila(),"Z") || Objects.equals(pila.get(pila.size()-1).toLowerCase(), reglas.get(x).getCadenaPila().toLowerCase()))
 				{
 					if(reglas.get(x).getOrderpila()=="Neutro")
 					{
 					}
-					else if(reglas.get(x).getOrderpila()!="D")
-
+					else if(reglas.get(x).getOrderpila().equals("D"))
 					{
-						pila.add(reglas.get(x).getOrderpila().toLowerCase());
+						pila.remove(pila.size()-1);	
 					}
 					else
 					{
-						pila.remove(pila.size()-1);	
+						pila.add(reglas.get(x).getOrderpila().toLowerCase());
 					}
 					estadonuevo=reglas.get(x).getEstaodo2();
 					posicion++;
 					probar_regla(cadena, posicion, estadonuevo, pila);
-
-				}
-				else if(Objects.equals(reglas.get(x).getCadenaPila(),"Z"))
-				{
-
-					if(reglas.get(x).getOrderpila()=="Neutro")
-					{
-					}
-					else if(!Objects.equals(reglas.get(x).getOrderpila(),"D"))
-
-					{
-						pila.add(reglas.get(x).getOrderpila().toLowerCase());
-					}
-					else
-					{
-						pila.remove(pila.size()-1);	
-					}
-					estadonuevo=reglas.get(x).getEstaodo2();
-					probar_regla(cadena, posicion, estadonuevo, pila);
+					probar_regla("F ", 0, estadonuevo, pila);
 				}
 			}
+
 		}
 
 
