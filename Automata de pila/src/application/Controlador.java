@@ -52,6 +52,10 @@ public class Controlador {
 				datos.add(auto);
 			}
 		}
+		for(int x=0;x<datos.size();x++)
+		{
+			System.out.println(datos.get(x).getEstado1());
+		}
 System.out.println("nombre es"+combobox.getAccessibleText());
 		//Editar.sobreeescribir(combobox.getAccessibleText(), datos);
 	}
