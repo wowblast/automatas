@@ -44,10 +44,11 @@ public class Main extends Application {
 			pw = new PrintWriter(bw);
 
 			pw.write("1,q0,a,Z,q0,A");
-			pw.append("\n2,q0,b,Z,q0,B");
-			pw.append("\n3,q0,F,Z,aceptacion,Neutro");
-			pw.append("\n4,aceptacion,a,A,aceptacion,D");
-			pw.append("\n5,aceptacion,b,B,aceptacion,D");
+			pw.append("\n2,q0,a,Z,aceptacion,A");
+			pw.append("\n3,q0,b,Z,q0,B");
+			pw.append("\n4,q0,b,Z,aceptacion,B");
+			pw.append("\n5,aceptacion,a,A,aceptacion,D");
+			pw.append("\n6,aceptacion,b,B,aceptacion,D");
 			pw.close();
 			bw.close();
 		}
@@ -57,9 +58,26 @@ public class Main extends Application {
 
 		}
 		pila.add("ZO");
-		String  cadena= "aaa ";
+		String  cadena= "aa ";
 		a.guardar_estados();
-		a.probar_regla(cadena, 0, "q0", pila);
+		a.probar_regla(cadena, 0,"q0", pila, a.buscar_reglas(cadena, 0, "q0", pila));
+		//a.probar_regla(cadena, 0, "q0", pila);
+		ArrayList<String> pila2= new ArrayList<String>(pila);
+    //  ArrayList<Integer> num= new ArrayList<Integer>(a.buscar_reglas(cadena, 0,"q0", pila));
+      ArrayList<Integer> num2= new ArrayList<Integer>(a.buscar_reglas(cadena, 0,"aceptacion", pila2));
+      ArrayList<Integer> num= new ArrayList<Integer>(a.buscar_reglas(cadena, 0,"q0", pila));
+
+      for(int x=0;x<num.size();x++)
+      {
+    	  System.out.println(num.get(x));
+    	///  System.out.println(num2.get(x));
+      }
+      System.out.println("ddddddddd");
+      for(int x=0;x<num2.size();x++)
+      {
+    	  //System.out.println(num.get(x));
+    	  System.out.println(num2.get(x));
+      }
 		
 		launch(args);
 	}

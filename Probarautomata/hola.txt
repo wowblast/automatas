@@ -1,5 +1,6 @@
 1,q0,a,Z,q0,A
-2,q0,b,Z,q0,B
-3,q0,F,Z,aceptacion,Neutro
-4,aceptacion,a,A,aceptacion,D
-5,aceptacion,b,B,aceptacion,D
+2,q0,a,Z,aceptacion,A
+3,q0,b,Z,q0,B
+4,q0,b,Z,aceptacion,B
+5,aceptacion,a,A,aceptacion,D
+6,aceptacion,b,B,aceptacion,D
