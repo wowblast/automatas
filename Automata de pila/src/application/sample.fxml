@@ -6,21 +6,26 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controlador">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" />
-      <VBox layoutY="5.0" prefHeight="500.0" prefWidth="194.0" style="-fx-background-color: #17202A;">
+      <VBox layoutY="5.0" prefHeight="500.0" prefWidth="194.0" style="-fx-background-color: #B43089;">
          <children>
-            <Pane prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #F8F9F9;" styleClass="#BFC9CA" />
-            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: #283593;" text="Button" textFill="WHITE" />
-            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: #283593;" text="Button" textFill="WHITE" />
-            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: #283593;" text="Button" textFill="WHITE" />
-            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: #283593;" text="Button" textFill="WHITE" />
-            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: #283593;" text="Button" textFill="WHITE" />
+            <Pane prefHeight="86.0" prefWidth="194.0" style="-fx-background-color: #B43089;" styleClass="#BFC9CA">
+               <children>
+                  <ImageView fx:id="main" fitHeight="63.0" fitWidth="108.0" layoutX="43.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+               </children></Pane>
+            <Button id="b" mnemonicParsing="false" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: #283593;" stylesheets="@application.css" text="Button" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: #283593;" stylesheets="@application.css" text="Button" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: #283593;" stylesheets="@application.css" text="Button" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: #283593;" stylesheets="@application.css" text="Button" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: #283593;" stylesheets="@application.css" text="Button" textFill="WHITE" />
          </children>
       </VBox>
       <Pane layoutX="194.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #839192;">
@@ -44,32 +49,39 @@
                </children>
             </Pane>
             <Pane prefHeight="500.0" prefWidth="809.0" style="-fx-background-color: #28702E;" />
-            <Pane prefHeight="500.0" prefWidth="809.0" style="-fx-background-color: #484752;">
+            <Pane prefHeight="500.0" prefWidth="809.0" style="-fx-background-color: #13C682;">
                <children>
                   <ScrollPane layoutX="683.0" layoutY="99.0" prefHeight="283.0" prefWidth="87.0">
                      <content>
-                        <TableView prefHeight="282.0" prefWidth="85.0">
+                        <TableView fx:id="tablapila" prefHeight="282.0" prefWidth="85.0" styleClass="table-cell" stylesheets="@application.css">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn fx:id="pila" prefWidth="75.0" text="Pila" />
                           </columns>
                         </TableView>
                      </content>
                   </ScrollPane>
-                  <Label layoutX="308.0" layoutY="43.0" prefHeight="35.0" prefWidth="137.0" text="Seleccione automata" textFill="WHITE" />
-                  <ComboBox layoutX="284.0" layoutY="124.0" prefWidth="150.0" />
-                  <ScrollPane layoutX="225.0" layoutY="241.0" prefHeight="200.0" prefWidth="333.0">
+                  <Label layoutX="203.0" layoutY="21.0" prefHeight="47.0" prefWidth="404.0" styleClass="welcome-text" stylesheets="@application.css" text="Seleccione automata" textFill="WHITE" />
+                  <ComboBox layoutX="227.0" layoutY="96.0" prefWidth="150.0" styleClass="combo-box-base" stylesheets="@application.css" />
+                  <ScrollPane layoutX="140.0" layoutY="241.0" prefHeight="200.0" prefWidth="418.0">
                      <content>
-                        <TableView prefHeight="200.0" prefWidth="337.0">
+                        <TableView prefHeight="200.0" prefWidth="416.0" styleClass="table-cell" stylesheets="@application.css">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Estado inicial" />
-                            <TableColumn prefWidth="75.0" text="letra entrante" />
-                              <TableColumn prefWidth="75.0" text="Tope de pila" />
-                              <TableColumn prefWidth="75.0" text="Estado2" />
+                            <TableColumn prefWidth="98.0" text="Estado inicial" />
+                            <TableColumn prefWidth="111.0" text="letra entrante" />
+                              <TableColumn prefWidth="87.0" text="Tope de pila" />
+                              <TableColumn prefWidth="86.0" text="Estado2" />
                           </columns>
                         </TableView>
                      </content>
                   </ScrollPane>
-                  <Button layoutX="351.0" layoutY="191.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="442.0" layoutY="100.0" mnemonicParsing="false" onAction="#start_scan" stylesheets="@application.css" text="Button" />
+                  <ImageView fx:id="imagen1" fitHeight="54.0" fitWidth="62.0" layoutX="221.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imagen2" fitHeight="54.0" fitWidth="62.0" layoutX="455.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="linea" layoutX="280.0" layoutY="190.0" prefHeight="7.0" prefWidth="194.0">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children></Pane>
