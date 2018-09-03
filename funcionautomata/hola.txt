@@ -1,0 +1,8 @@
+1,leer,F,z0,acept,Z
+2,leer,a,z0,leer,A
+3,leer,a,z0,leer,AA
+4,leer,a,A,leer,A
+5,leer,a,A,leer,AA
+6,leer,b,A,leer_b,D
+7,leer_b,b,A,leer_b,D
+8,leer_b,F,z0,acept,Z

@@ -1,0 +1,10 @@
+1,leer,F,z0,acept,Z
+2,leer,a,z0,leer,A
+3,leer,b,z0,leer,BB
+4,leer,a,A,leer,A
+5,leer,a,B,leer,D
+6,leer,b,B,leer,BB
+7,leer_b,A,Segunda_a,D
+8,Segunda_a,F,A,leer,D
+9,Segunda_a,F,B,leer,B
+10,Segunda_a,F,z0,leer,B
