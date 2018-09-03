@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControladorQuintuple">
+   <children>
+      <Pane prefHeight="508.0" prefWidth="663.0">
+         <children>
+            <Button layoutX="465.0" layoutY="449.0" mnemonicParsing="false" onAction="#guardarycontinuar" prefHeight="31.0" prefWidth="168.0" text="Guardar y Continuar" />
+         </children>
+      </Pane>
+      <Text layoutX="112.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Definicion Formal del Automata de Pila">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text layoutX="104.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conjunto de Estados Finitos" />
+      <TextField fx:id="txtconjestad" layoutX="297.0" layoutY="172.0" prefHeight="31.0" prefWidth="238.0" />
+      <Text layoutX="138.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alfabeto del Automata" />
+      <TextField fx:id="txtalfabetoauto" layoutX="297.0" layoutY="218.0" prefHeight="31.0" prefWidth="238.0" />
+      <Text layoutX="168.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alfabeto de la Pila" />
+      <TextField fx:id="txtalfabetopila" layoutX="297.0" layoutY="263.0" prefHeight="31.0" prefWidth="238.0" />
+      <Text layoutX="186.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado(s) Inicial" />
+      <TextField fx:id="txtestadoin" layoutX="297.0" layoutY="317.0" prefHeight="31.0" prefWidth="238.0" />
+      <TextField fx:id="txtsimboloin" layoutX="297.0" layoutY="373.0" prefHeight="31.0" prefWidth="238.0" />
+      <Text layoutX="133.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simbolo Inicial de la Pila" />
+      <Text layoutX="156.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Del Automata" />
+      <TextField fx:id="txtnomauto" layoutX="320.0" layoutY="106.0" />
+   </children>
+</AnchorPane>
