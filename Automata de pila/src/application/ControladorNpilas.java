@@ -1,24 +1,16 @@
 package application;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.swing.JPanel;
-
 import javafx.animation.RotateTransition;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableFloatArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -26,22 +18,20 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class Controlador {
+public class ControladorNpilas {
 	ArrayList<String> nombres;
-	String pilavisible="hola";
+	@FXML
+	private Button funcionar;
 
 	@FXML
-	 private TableView<Reglamostrada> tablaestado;
+	private TableView<Reglamostrada> tablaestado;
 
 	@FXML
 	private TableColumn<Reglamostrada, Integer> numregla;
@@ -55,19 +45,35 @@ public class Controlador {
 	@FXML
 	private TableColumn<Reglamostrada, String> topepila;
 	@FXML
+	private TableColumn<Reglamostrada, String>  tp2;
+
+	@FXML
+	private TableColumn<Reglamostrada, String>  tp3;
+
+	@FXML
+	private TableColumn<Reglamostrada, String> tp4;
+	@FXML
 	private ImageView imagen1;
 
 	@FXML
 	private ImageView imagen2;
 	@FXML
 	private ImageView main;
-	
+
 	@FXML
 	private ComboBox combobox;
 	@FXML
-	 private  TableView<Pilavisible> tablapila;
+	private  TableView<Pilavisible> tablapila;
 	@FXML
 	private TableColumn<Pilavisible,String>  pilamostrar;
+	@FXML
+	private TableColumn<Pilavisible,String> pilamostrar2;
+
+	@FXML
+	private TableColumn<Pilavisible,String> pilamostrar3;
+
+	@FXML
+	private TableColumn<Pilavisible,String> pilamostrar4;
 	@FXML
 	private ComboBox combobox_de_funcionar;
 	@FXML
@@ -76,31 +82,22 @@ public class Controlador {
 	private Button botonguardar;
 	@FXML
 	private Label linea;
-	@FXML
-	private CheckBox a_pv;
-    Boolean terminopila=false;
-   Boolean terminoreglas=false;
-    int numerospilas=0;
-    int numeroreglas=0;
+	Boolean terminopila=false;
+	Boolean terminoreglas=false;
+	int numerospilas=0;
+	int numeroreglas=0;
 	@FXML
 	private CheckBox a_ef;
+	@FXML
+	private CheckBox a_pv;
+
 
 
 	private RotateTransition rotateTransition1, rotateTransition2 ;
-
-	
-	
-	@FXML
-	public void cargarAutomata()
+	public void Extension(ActionEvent event) throws Exception
 	{
-	//	tabla.setItems(null);
-		System.out.println("nombre es"+combobox.getValue().toString());
-		Editar.leer(combobox.getValue().toString());
-		//tabla.setItems(Editar.data);
-	}
 
-  
-    
+	}
 	@FXML
 	public void verificar()
 	{
@@ -116,18 +113,18 @@ public class Controlador {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+
 		imagen1.setImage(new Image("imagenes/syn.png"));
 		// text1.setText("Checking For Updates");
 		rotateTransition1 = new RotateTransition(Duration.seconds(15), imagen1);
 		rotateTransition2 = new RotateTransition(Duration.seconds(2), imagen2);
-		FuncionAutomata.guardar_estados_Automatanormal(combobox_de_funcionar.getValue().toString()); 
-		String  cadena= "aaabbN ";
+		FuncionAutomata.guardarreglasNautomatas(combobox_de_funcionar.getValue().toString()); 
+		String  cadena= "ababababN ";
 		//t.cancel();
 		Datosautomata.estadosiniciales.add("leer");
-		
-	     
-		
+
+
+
 		System.out.println(FuncionAutomata.mostrartodo.size()+" ffefggwge");
 		for(int x=0;x<FuncionAutomata.mostrartodo.size();x++)
 		{
@@ -141,7 +138,7 @@ public class Controlador {
 			}
 			System.out.println("");
 		}
-     	RotateTransition transition[] = {rotateTransition1, rotateTransition2
+		RotateTransition transition[] = {rotateTransition1, rotateTransition2
 		};
 		for (RotateTransition rTransition : transition) {
 			rTransition.setCycleCount(1);
@@ -156,9 +153,15 @@ public class Controlador {
 			FuncionAutomata.estadofinal=true;
 			for(int x=0;x<Datosautomata.estadosiniciales.size();x++)
 			{
-				ArrayList<String> pila= new ArrayList<String>();
-				pila.add("z0");
-				FuncionAutomata.probar_reglaAutomatanormal(cadena, 0,Datosautomata.estadosiniciales.get(x), pila);
+				ArrayList<String> pila1= new ArrayList<String>();
+				ArrayList<String> pila2= new ArrayList<String>();
+				ArrayList<String> pila3= new ArrayList<String>();
+				ArrayList<String> pila4= new ArrayList<String>();
+				pila2.add("z0");
+				pila1.add("z0");
+				pila3.add("z0");
+				pila4.add("z0");
+				FuncionAutomata.probar_reglasAutomataNpilas(cadena, 0, Datosautomata.estadosiniciales.get(x), pila1, pila2, pila3, pila4);
 			}
 			for(int x=0;x<FuncionAutomata.pilas.size();x++)
 			{
@@ -174,50 +177,50 @@ public class Controlador {
 			}
 			ObservableList<String> piladatos  =    FXCollections.observableArrayList();
 			ArrayList<String> lineas= new ArrayList<String>() ;
-			
+
 			Timer t = new Timer();
 			TimerTask tt = new TimerTask() {
 				@Override
 				public void run() {
 					//do something
 					System.out.println("llego");
-					
-					
+
+
 					if(terminopila&&terminoreglas)
 					{
 						t.cancel();
 					}
-					if(numeroreglas<FuncionAutomata.mostrartodo.size())
+					if(numeroreglas<FuncionAutomata.mostrartodoN.size())
 					{
 						tablaestado.getItems().add(FuncionAutomata.mostrartodo.get(numeroreglas));
 					}
-					
-					if(numerospilas<FuncionAutomata.pilas.size())
+
+					if((numerospilas+3)<FuncionAutomata.pilasdepilas.size())
 					{
 						tablapila.getItems().clear();
-						for(int d=(FuncionAutomata.pilas.get(numerospilas).size()-1);d>=0;d--)
+						for(int d=(FuncionAutomata.pilasdepilas.get(numerospilas).size()-1);d>=0;d--)
 						{
 
-				        	 Pilavisible p= new Pilavisible(FuncionAutomata.pilas.get(numerospilas).get(d));
-								tablapila.getItems().add(p);
+							Pilavisible p= new Pilavisible(FuncionAutomata.pilasdepilas.get(numerospilas).get(d),FuncionAutomata.pilasdepilas.get(numerospilas+1).get(d),FuncionAutomata.pilasdepilas.get(numerospilas+2).get(d),FuncionAutomata.pilasdepilas.get(numerospilas+3).get(d));
+							tablapila.getItems().add(p);
 						}
-						
+
 					}
 					if(numeroreglas>FuncionAutomata.mostrartodo.size())
 					{
 						terminoreglas=true;
 					}
-					
+
 					if(numerospilas>FuncionAutomata.pilas.size())
 					{
 						terminopila=true;
 					}
 					numeroreglas++;
-					numerospilas++;
-					
-                    		 
+					numerospilas=numerospilas+4;
 
-				
+
+
+
 
 
 
@@ -225,7 +228,7 @@ public class Controlador {
 
 				};
 			};
-			t.schedule(tt,400,400);
+			t.schedule(tt,1000,1000);
 
 		}
 		else if(a_pv.isSelected())
@@ -261,45 +264,7 @@ public class Controlador {
 
 		});
 	}
-	private void start_scan(ActionEvent event) {
-		imagen1.setImage(new Image("imagenes/syn.png"));
-		// text1.setText("Checking For Updates");
-		rotateTransition1 = new RotateTransition(Duration.seconds(2), imagen1);
-		rotateTransition2 = new RotateTransition(Duration.seconds(2), imagen2);
-		int a =10;
-		RotateTransition transition[] = {rotateTransition1, rotateTransition2
-		};
-		for (RotateTransition rTransition : transition) {
-			rTransition.setCycleCount(1);
-			rTransition.setAutoReverse(false);
-			rTransition.setFromAngle(720);
-			rTransition.setToAngle(0);
-		}
-		rotateTransition1.play();
-		rotateTransition1.setOnFinished((e) -> {
-			imagen1.setImage(new Image("imagenes/ok.png"));
-			linea.setStyle("-fx-background-color:#45A563");
-			imagen2.setImage(new Image("imagenes/syn.png"));
-			//text2.setText("Pre-scan Operations");
-			rotateTransition2.play();
-		});
-
-		rotateTransition2.setOnFinished((e) -> {
-			if(a<6)
-			{
-				imagen2.setImage(new Image("imagenes/ok.png"));
-			}
-			else
-			{
-				imagen2.setImage(new Image("imagenes/x.png"));
-			}
-			// lbl2.setStyle("-fx-background-color:#45A563");
-			//  img3.setImage(new Image("imageness/syn.png"));
-			//text3.setText("Scanning Memory");
-			//rotateTransition3.play();
-		});
-	}
-
+	
 
 
 
@@ -309,23 +274,44 @@ public class Controlador {
 	@SuppressWarnings("unchecked")
 	public void initialize() {
 		// TODO Auto-generated method stub
-	   
-		
+
+
 		main.setImage(new Image("imagenes/automata.png"));
 
-		pilamostrar.setCellValueFactory(new PropertyValueFactory<Pilavisible, String>("topepila"));
+		pilamostrar.setCellValueFactory(new PropertyValueFactory<Pilavisible, String>("topepila1"));
+		pilamostrar2.setCellValueFactory(new PropertyValueFactory<Pilavisible, String>("topepila2"));
+		pilamostrar3.setCellValueFactory(new PropertyValueFactory<Pilavisible, String>("topepila3"));
+		pilamostrar4.setCellValueFactory(new PropertyValueFactory<Pilavisible, String>("topepila4"));
 		//cod
-		 numregla.setCellValueFactory(new PropertyValueFactory<Reglamostrada, Integer>("numregla"));
+		numregla.setCellValueFactory(new PropertyValueFactory<Reglamostrada, Integer>("numregla"));
 
 		estado1.setCellValueFactory(new PropertyValueFactory<Reglamostrada, String>("estado"));
-		 letra.setCellValueFactory(new PropertyValueFactory<Reglamostrada, String>("entrada"));
+		letra.setCellValueFactory(new PropertyValueFactory<Reglamostrada, String>("entrada"));
 
-		 topepila.setCellValueFactory(new PropertyValueFactory<Reglamostrada, String>("topepila"));
+		topepila.setCellValueFactory(new PropertyValueFactory<Reglamostrada, String>("topepila1"));
+		tp2.setCellValueFactory(new PropertyValueFactory<Reglamostrada, String>("topepila2"));
+		tp3.setCellValueFactory(new PropertyValueFactory<Reglamostrada, String>("topepila3"));
+		tp4.setCellValueFactory(new PropertyValueFactory<Reglamostrada, String>("topepila4"));
+		
 
-		 
-          
-	
-	
+		/* tp2;
+
+			@FXML
+			private TableColumn<Reglamostrada, String>  tp3;
+
+			@FXML
+			private TableColumn<Reglamostrada, String> tp4;
+			pilamostrar2;
+
+	@FXML
+	private TableColumn<Pilavisible,String> pilamostrar3;
+
+	@FXML
+	private TableColumn<Pilavisible,String> pilamostrar4;
+			*/
+
+
+
 		nombres= Editar.obtenerarchivos();
 
 		ObservableList<String> options = 

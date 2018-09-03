@@ -24,7 +24,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		Editar.leer("hola.txt");
-		System.out.println("hecho");
+		
 		launch(args);
 		
 	}

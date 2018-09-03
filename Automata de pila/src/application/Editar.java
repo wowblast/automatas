@@ -12,11 +12,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Editar {
-	static ArrayList<Automata> Automata = new ArrayList<Automata>();
-	static ObservableList<Automata> data  =    FXCollections.observableArrayList();;
-	static Automata autoreglas;
+	static ArrayList<Automatavista> Automata = new ArrayList<Automatavista>();
+	static ObservableList<Automatavista> data  =    FXCollections.observableArrayList();
+	//static Automata autoreglas;
 
-	public static  void sobreeescribir(String nombre,ObservableList<Automata> datos)
+	public static  void sobreeescribir(String nombre,ObservableList<Automatavista> datos)
 	{
 		File f;
 		FileWriter w;
@@ -71,7 +71,7 @@ public class Editar {
 				System.out.println("llego ");
 				for(int x=0;x<10;x++)
 				{
-					data.add(new Automata(Integer.parseInt(partes[0]),partes[1],partes[2],partes[3],partes[4],partes[5]));
+					data.add(new Automatavista(Integer.parseInt(partes[0]),partes[1],partes[2],partes[3],partes[4],partes[5]));
 				}
 
 			}
